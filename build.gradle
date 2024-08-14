@@ -1,0 +1,55 @@
+plugins {
+    id 'org.springframework.boot' version '3.3.2'
+    id 'io.spring.dependency-management' version '1.1.0'
+    id 'java'
+}
+
+group = 'dale'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.mapstruct:mapstruct:1.5.3.Final'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    runtimeOnly 'com.h2database:h2'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.wiremock:wiremock-standalone:3.9.1'
+}
+
+test {
+    useJUnitPlatform()
+    // Configure for unit tests
+    filter {
+        includeTestsMatching "dale.lexisnexisapidemo.unit.*"
+        includeTestsMatching "*Test"
+    }
+}
+
+// Define a new task for integration tests
+task integrationTest(type: Test) {
+    useJUnitPlatform()
+    // Configure for integration tests
+    filter {
+        includeTestsMatching "dale.lexisnexisapidemo.company.search.integration.*"
+        includeTestsMatching "*IT"
+    }
+    // Ensure integration tests run after unit tests
+    shouldRunAfter test
+}
+
+// Optional: add integration tests to the check lifecycle
+check.dependsOn integrationTest
+
+// Configure the Spring Boot plugin
+springBoot {
+    buildInfo()
+}

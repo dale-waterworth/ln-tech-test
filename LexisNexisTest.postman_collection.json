@@ -1,0 +1,91 @@
+{
+	"info": {
+		"_postman_id": "2bdd6491-0b3f-4f8f-ad5c-2ab696372360",
+		"name": "LexisNexisTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2900974",
+		"_collection_link": "https://warped-eclipse-355693.postman.co/workspace/Origami~a2bb5710-1568-4d75-a740-4e0e12e94304/collection/2900974-2bdd6491-0b3f-4f8f-ad5c-2ab696372360?action=share&source=collection_link&creator=2900974"
+	},
+	"item": [
+		{
+			"name": "company search",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://exercise.trunarrative.cloud/TruProxyAPI/rest/Companies/v1/Search?Query=BBC",
+					"protocol": "https",
+					"host": [
+						"exercise",
+						"trunarrative",
+						"cloud"
+					],
+					"path": [
+						"TruProxyAPI",
+						"rest",
+						"Companies",
+						"v1",
+						"Search"
+					],
+					"query": [
+						{
+							"key": "Query",
+							"value": "BBC"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get officers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://exercise.trunarrative.cloud/TruProxyAPI/rest/Companies/v1/Officers?CompanyNumber=06500244",
+					"protocol": "https",
+					"host": [
+						"exercise",
+						"trunarrative",
+						"cloud"
+					],
+					"path": [
+						"TruProxyAPI",
+						"rest",
+						"Companies",
+						"v1",
+						"Officers"
+					],
+					"query": [
+						{
+							"key": "CompanyNumber",
+							"value": "06500244"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "random requests",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
